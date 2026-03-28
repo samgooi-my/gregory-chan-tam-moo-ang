@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+
+<!-- SEO Meta Tags -->
+<title>Gregory Chan Tam Moo &amp; Ang | Advocates &amp; Solicitors in Pandan Indah, KL</title>
+<meta name="description" content="Professional law firm landing page for Gregory Chan Tam Moo &amp; Ang — Advocates &amp; Solicitors in Pandan Indah, Kuala Lumpur, offering property, family, probate, litigation, corporate, and employment law services." />
+<meta property="og:title" content="Gregory Chan Tam Moo &amp; Ang | Advocates &amp; Solicitors in Pandan Indah, KL" />
+<meta property="og:description" content="Professional law firm landing page for Gregory Chan Tam Moo &amp; Ang — Advocates &amp; Solicitors in Pandan Indah, Kuala Lumpur, offering property, family, probate, litigation, corporate, and employment law services." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Gregory Chan Tam Moo &amp; Ang | Advocates &amp; Solicitors in Pandan Indah, KL" />
+<meta name="twitter:description" content="Professional law firm landing page for Gregory Chan Tam Moo &amp; Ang — Advocates &amp; Solicitors in Pandan Indah, Kuala Lumpur, offering property, family, probate, litigation, corporate, and employment law services." />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=2717');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='ZKMqqrL9';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+  <!-- ============================================================================ -->
+  <!-- HEADER / NAVIGATION: Minimal executive top bar                               -->
+  <!-- Features: Firm name, location cue, and consultation CTA                     -->
+  <!-- Mobile Padding: px-4 ensures safe spacing on all screens                     -->
+  <!-- ============================================================================ -->
+  <header class="sticky top-0 z-50 border-b border-[#0F1B35]/10 bg-[#F4F2EE]/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 md:px-8 lg:px-12">
+      <div>
+        <p class="serif-heading text-sm font-semibold uppercase tracking-[0.22em] text-[#B8860B]">Gregory Chan Tam Moo & Ang</p>
+        <p class="text-xs text-[#0F1B35]/70">Advocates & Solicitors · Pandan Indah, Kuala Lumpur</p>
+      </div>
+      <a href="#contact" class="rounded-full border border-[#B8860B] bg-[#0F1B35] px-5 py-2 text-sm font-medium text-[#F4F2EE] transition hover:bg-[#B8860B] hover:text-[#0F1B35]">Book a Consultation</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================================ -->
+    <!-- HERO SECTION: Main landing area with headline, subtext, and primary CTA     -->
+    <!-- Features: Editorial layout, prestige accents, responsive spacing            -->
+    <!-- Mobile Padding: Generous p-4/px-4 prevents clipping at small widths          -->
+    <!-- ============================================================================ -->
+    <section class="hero-section border-b border-[#0F1B35]/10">
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 md:px-8 lg:grid-cols-12 lg:px-12 lg:py-20">
+        <div class="lg:col-span-7">
+          <p class="mb-4 inline-flex items-center rounded-full border border-[#B8860B]/30 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#B8860B] shadow-sm">Precision. Principle. Professional Counsel.</p>
+          <h1 class="serif-heading max-w-3xl text-4xl font-bold leading-tight text-[#0F1B35] sm:text-5xl lg:text-6xl">A Firm Built on Precision &amp; Principle</h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-[#0F1B35]/82 sm:text-lg">
+            Sophisticated legal services for individuals and corporations, delivered with clarity, discretion, and unwavering attention to detail.
+          </p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="#contact" class="cta-primary inline-flex items-center justify-center rounded-full bg-[#B8860B] px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#B8860B]/20 transition hover:bg-[#9f7408]">Book a Consultation</a>
+            <a href="#practice-areas" class="inline-flex items-center justify-center rounded-full border border-[#0F1B35]/15 bg-white px-7 py-3.5 text-sm font-semibold text-[#0F1B35] transition hover:border-[#B8860B] hover:text-[#B8860B]">Explore Practice Areas</a>
+          </div>
+          <dl class="mt-10 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
+            <div class="rounded-2xl border border-[#0F1B35]/10 bg-white p-4">
+              <dt class="text-xs uppercase tracking-[0.18em] text-[#0F1B35]/55">Location</dt>
+              <dd class="mt-2 text-sm font-semibold text-[#0F1B35]">Level 15, Menara Maxisegar</dd>
+            </div>
+            <div class="rounded-2xl border border-[#0F1B35]/10 bg-white p-4">
+              <dt class="text-xs uppercase tracking-[0.18em] text-[#0F1B35]/55">Consults</dt>
+              <dd class="mt-2 text-sm font-semibold text-[#0F1B35]">By appointment &amp; weekday visits</dd>
+            </div>
+            <div class="rounded-2xl border border-[#0F1B35]/10 bg-white p-4">
+              <dt class="text-xs uppercase tracking-[0.18em] text-[#0F1B35]/55">Languages</dt>
+              <dd class="mt-2 text-sm font-semibold text-[#0F1B35]">EN · BM · Mandarin · Cantonese</dd>
+            </div>
+            <div class="rounded-2xl border border-[#0F1B35]/10 bg-white p-4">
+              <dt class="text-xs uppercase tracking-[0.18em] text-[#0F1B35]/55">Approach</dt>
+              <dd class="mt-2 text-sm font-semibold text-[#0F1B35]">Transparent and responsive</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="lift-hover rounded-3xl border border-[#0F1B35]/10 bg-[#0F1B35] p-8 text-[#F4F2EE] shadow-2xl shadow-[#0F1B35]/10">
+            <p class="text-xs uppercase tracking-[0.28em] text-[#B8860B]">Trusted legal guidance</p>
+            <h2 class="serif-heading mt-4 text-3xl font-bold leading-tight">Measured counsel for decisive moments.</h2>
+            <p class="mt-5 leading-7 text-white/80">
+              From conveyancing and estate planning to litigation and corporate advisory, our firm brings disciplined strategy and practical solutions to every matter.
+            </p>
+            <div class="mt-8 border-t border-white/10 pt-6">
+              <p class="text-sm uppercase tracking-[0.2em] text-white/50">Office Address</p>
+              <p class="mt-2 text-base font-medium">15-02, Level 15, Menara Maxisegar, Jalan Pandan Indah 4/2, Pandan Indah, 55100 Kuala Lumpur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- TICKER STRIP: Decorative scrolling practice-area highlights                  -->
+    <!-- Features: Continuous marquee-style strip with refined contrast              -->
+    <!-- Mobile Padding: Full-width container with contained vertical spacing        -->
+    <!-- ============================================================================ -->
+    <section aria-label="Practice area ticker" class="border-b border-[#0F1B35]/10 bg-[#0F1B35] text-[#F4F2EE]">
+      <div class="overflow-hidden py-4">
+        <div class="ticker-track flex items-center gap-10 whitespace-nowrap px-4 text-sm font-medium uppercase tracking-[0.22em] sm:px-6 md:px-8 lg:px-12">
+          <span>Property &amp; Conveyancing</span>
+          <span>·</span>
+          <span>Family Law</span>
+          <span>·</span>
+          <span>Wills &amp; Probate</span>
+          <span>·</span>
+          <span>Civil Litigation</span>
+          <span>·</span>
+          <span>Corporate Advisory</span>
+          <span>·</span>
+          <span>Employment Law</span>
+          <span>·</span>
+          <span>Property &amp; Conveyancing</span>
+          <span>·</span>
+          <span>Family Law</span>
+          <span>·</span>
+          <span>Wills &amp; Probate</span>
+          <span>·</span>
+          <span>Civil Litigation</span>
+          <span>·</span>
+          <span>Corporate Advisory</span>
+          <span>·</span>
+          <span>Employment Law</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- PRACTICE AREAS SECTION: Six-row table of core services                      -->
+    <!-- Features: Clear service summary with elegant table layout                   -->
+    <!-- Mobile Padding: Table container includes horizontal breathing room          -->
+    <!-- ============================================================================ -->
+    <section id="practice-areas" data-section="practice-areas" class="practice-areas-section">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12 lg:py-20">
+        <div class="max-w-3xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#B8860B]">Practice Areas</p>
+          <h2 class="serif-heading mt-3 text-3xl font-bold text-[#0F1B35] sm:text-4xl">Focused expertise across the matters that shape business and family life</h2>
+        </div>
+
+        <div class="mt-10 overflow-hidden rounded-3xl border border-[#0F1B35]/10 bg-white shadow-sm">
+          <table class="w-full border-collapse text-left">
+            <thead class="bg-[#0F1B35] text-[#F4F2EE]">
+              <tr>
+                <th class="px-5 py-4 text-sm font-semibold uppercase tracking-[0.2em] sm:px-6">Practice Area</th>
+                <th class="px-5 py-4 text-sm font-semibold uppercase tracking-[0.2em] sm:px-6">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#0F1B35]/10">
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Property &amp; Conveyancing</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Guidance on sales, purchases, transfers, financing, and title matters with careful documentation.</td>
+              </tr>
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Family &amp; Matrimonial Law</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Sensitive support for divorce, custody, maintenance, and family agreements with discretion.</td>
+              </tr>
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Wills Probate &amp; Estate</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Estate planning, probate administration, and succession solutions to protect legacy and intent.</td>
+              </tr>
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Civil Litigation</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Assertive representation in disputes, claims, enforcement, and negotiations.</td>
+              </tr>
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Corporate &amp; Commercial</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Practical legal advice for contracts, governance, transactions, and day-to-day business needs.</td>
+              </tr>
+              <tr class="hover:bg-[#F4F2EE]/80">
+                <td class="px-5 py-5 font-semibold text-[#0F1B35] sm:px-6">Employment Law</td>
+                <td class="px-5 py-5 text-[#0F1B35]/78 sm:px-6">Balanced counsel on workplace rights, disputes, discipline, and employer-employee matters.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- ABOUT SECTION: Firm identity, values, and client experience                 -->
+    <!-- Features: Narrative content with trust-building highlights                  -->
+    <!-- Mobile Padding: Comfortable reading rhythm for smaller screens             -->
+    <!-- ============================================================================ -->
+    <section id="about" data-section="about-firm" class="border-y border-[#0F1B35]/10 bg-white">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:px-8 lg:grid-cols-12 lg:px-12 lg:py-20">
+        <div class="lg:col-span-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#B8860B]">About the Firm</p>
+          <h2 class="serif-heading mt-3 text-3xl font-bold text-[#0F1B35] sm:text-4xl">Experienced solicitors, accessible counsel, and a location clients can reach with ease</h2>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="grid gap-5 md:grid-cols-2">
+            <article class="lift-hover rounded-3xl border border-[#0F1B35]/10 bg-[#F4F2EE] p-6">
+              <h3 class="serif-heading text-xl font-bold text-[#0F1B35]">Level 15, Menara Maxisegar</h3>
+              <p class="mt-3 leading-7 text-[#0F1B35]/78">A professional office setting in Pandan Indah designed to support focused consultations and client confidentiality.</p>
+            </article>
+            <article class="lift-hover rounded-3xl border border-[#0F1B35]/10 bg-[#F4F2EE] p-6">
+              <h3 class="serif-heading text-xl font-bold text-[#0F1B35]">Experienced Solicitors</h3>
+              <p class="mt-3 leading-7 text-[#0F1B35]/78">Our team approaches each matter with practical judgment, legal precision, and a commitment to strong client outcomes.</p>
+            </article>
+            <article class="lift-hover rounded-3xl border border-[#0F1B35]/10 bg-[#F4F2EE] p-6">
+              <h3 class="serif-heading text-xl font-bold text-[#0F1B35]">Transparent Communication</h3>
+              <p class="mt-3 leading-7 text-[#0F1B35]/78">Clients are kept informed with clear explanations, straightforward steps, and candid expectations throughout the process.</p>
+            </article>
+            <article class="lift-hover rounded-3xl border border-[#0F1B35]/10 bg-[#F4F2EE] p-6">
+              <h3 class="serif-heading text-xl font-bold text-[#0F1B35]">Reasonable Fees</h3>
+              <p class="mt-3 leading-7 text-[#0F1B35]/78">We provide fee structures that are sensible, transparent, and proportionate to the scope and complexity of the work.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- TESTIMONIALS SECTION: Confidence and trust statements                       -->
+    <!-- Features: Short, polished client-centered endorsements                      -->
+    <!-- Mobile Padding: Grid stacking preserves readability on small devices        -->
+    <!-- ============================================================================ -->
+    <section aria-label="Client confidence" class="bg-[#F4F2EE]">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-8 lg:px-12">
+        <div class="grid gap-6 md:grid-cols-3">
+          <blockquote class="rounded-3xl border border-[#0F1B35]/10 bg-white p-6 shadow-sm">
+            <p class="text-[#0F1B35]/80 leading-7">“Clear advice, steady communication, and a team that treats each matter with the seriousness it deserves.”</p>
+          </blockquote>
+          <blockquote class="rounded-3xl border border-[#0F1B35]/10 bg-white p-6 shadow-sm">
+            <p class="text-[#0F1B35]/80 leading-7">“Professional, responsive, and precise — exactly the level of service expected from a top-tier firm.”</p>
+          </blockquote>
+          <blockquote class="rounded-3xl border border-[#0F1B35]/10 bg-white p-6 shadow-sm">
+            <p class="text-[#0F1B35]/80 leading-7">“A reassuring combination of legal expertise and practical commercial sense.”</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================================ -->
+    <!-- CONTACT SECTION: Enquiry details and contact form                           -->
+    <!-- Features: Address, hours, languages, and simple enquiry form                -->
+    <!-- Mobile Padding: Large input spacing and safe side margins                   -->
+    <!-- ============================================================================ -->
+    <section id="contact" data-section="contact" class="contact-section border-t border-[#0F1B35]/10 bg-[#0F1B35] text-[#F4F2EE]">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:px-8 lg:grid-cols-12 lg:px-12 lg:py-20">
+        <div class="lg:col-span-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#B8860B]">Contact</p>
+          <h2 class="serif-heading mt-3 text-3xl font-bold sm:text-4xl">Speak with us about your legal matter</h2>
+          <div class="mt-8 space-y-5 text-sm leading-7 text-white/82">
+            <p><span class="font-semibold text-white">Address:</span> 15-02, Level 15, Menara Maxisegar, Jalan Pandan Indah 4/2, Pandan Indah, 55100 Kuala Lumpur</p>
+            <p><span class="font-semibold text-white">Hours:</span> Monday to Friday, 9:00 AM – 5:30 PM · Saturday by appointment</p>
+            <p><span class="font-semibold text-white">Languages:</span> English, Bahasa Malaysia, Mandarin, Cantonese</p>
+          </div>
+          <div class="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <p class="text-sm uppercase tracking-[0.18em] text-[#B8860B]">Client Experience</p>
+            <p class="mt-3 leading-7 text-white/82">Please share a brief summary of your matter, and our office will review the enquiry and respond appropriately.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <form id="contact-form" class="contact-form rounded-3xl border border-white/10 bg-[#F4F2EE] p-6 text-[#0F1B35] shadow-2xl shadow-black/10">
+            <div class="grid gap-5 md:grid-cols-2">
+              <div class="md:col-span-1">
+                <label for="name" class="mb-2 block text-sm font-semibold">Name</label>
+                <input id="name" name="name" type="text" required class="w-full rounded-2xl border border-[#0F1B35]/15 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#B8860B]" />
+              </div>
+              <div class="md:col-span-1">
+                <label for="phone" class="mb-2 block text-sm font-semibold">Phone</label>
+                <input id="phone" name="phone" type="tel" required class="w-full rounded-2xl border border-[#0F1B35]/15 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#B8860B]" />
+              </div>
+              <div class="md:col-span-2">
+                <label for="matter" class="mb-2 block text-sm font-semibold">Legal Matter</label>
+                <input id="matter" name="matter" type="text" required placeholder="e.g. Property transfer, divorce, probate, commercial dispute" class="w-full rounded-2xl border border-[#0F1B35]/15 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#B8860B]" />
+              </div>
+              <div class="md:col-span-2">
+                <label for="message" class="mb-2 block text-sm font-semibold">Message</label>
+                <textarea id="message" name="message" rows="5" required class="w-full rounded-2xl border border-[#0F1B35]/15 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#B8860B]"></textarea>
+              </div>
+            </div>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p id="form-status" class="text-sm text-[#0F1B35]/70">We will review your enquiry and contact you as soon as possible.</p>
+              <button type="submit" class="inline-flex items-center justify-center rounded-full bg-[#B8860B] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#9f7408]">Send Enquiry</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================================ -->
+  <!-- FOOTER SECTION: Firm identity and copyright                                 -->
+  <!-- Features: Compact legal footer with brand and location                      -->
+  <!-- Mobile Padding: Balanced spacing on small screens                            -->
+  <!-- ============================================================================ -->
+  <footer class="border-t border-[#0F1B35]/10 bg-[#F4F2EE]">
+    <div class="mx-auto max-w-7xl px-4 py-8 text-center sm:px-6 md:px-8 lg:px-12">
+      <p class="serif-heading text-sm font-semibold uppercase tracking-[0.22em] text-[#0F1B35]">Gregory Chan Tam Moo &amp; Ang</p>
+      <p class="mt-2 text-sm text-[#0F1B35]/72">Advocates &amp; Solicitors | Pandan Indah, KL | © 2025</p>
+    </div>
+  </footer>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
